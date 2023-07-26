@@ -1,6 +1,6 @@
 <template>
   <div>{{ $t('login.login') }} {{ $t('public.delete') }}</div>
-  <ElButton @click="test">修改store值1</ElButton>
+  <ElButton @click="test">修改store值</ElButton>
 </template>
 <script setup lang="ts">
 import { useLocale } from '@/locales/useLocale.ts';
