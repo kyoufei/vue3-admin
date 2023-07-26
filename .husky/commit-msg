@@ -1,9 +1,8 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-shift
-
-npx --no -- commitlint --edit $1
 
 # 跳过vim编辑器，直接进行规范提交
 git commit --no-verify -F $1 
+
+npx --no -- commitlint --edit $1
