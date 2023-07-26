@@ -4,7 +4,7 @@ import { resolve } from 'node:path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
+// import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
 import UnoCSS from 'unocss/vite';
 import requireTransform from 'vite-plugin-require-transform';
 
@@ -30,18 +30,18 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
         dts: resolve(resolve(__dirname, 'src'), 'types', 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径
         resolvers: [ElementPlusResolver()],
       }),
-      createStyleImportPlugin({
-        resolves: [ElementPlusResolve()],
-        libs: [
-          {
-            libraryName: 'element-plus',
-            esModule: true,
-            resolveStyle: (name) => {
-              return `element-plus/lib/theme-chalk/${name}.css`;
-            },
-          },
-        ],
-      }),
+      // createStyleImportPlugin({
+      //   resolves: [ElementPlusResolve()],
+      //   libs: [
+      //     {
+      //       libraryName: 'element-plus',
+      //       esModule: true,
+      //       resolveStyle: (name) => {
+      //         return `element-plus/lib/theme-chalk/${name}.css`;
+      //       },
+      //     },
+      //   ],
+      // }),
       UnoCSS({
         /* options */
       }),

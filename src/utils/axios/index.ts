@@ -31,7 +31,7 @@ service.interceptors.response.use(
     nProgress.done();
     const { code, msg } = response.data;
     // 登录成功
-    if (code === '200') {
+    if (code === 200) {
       return response.data;
     }
 
