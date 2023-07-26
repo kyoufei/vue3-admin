@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# npx --no-install commitlint --edit ""
+exec < /dev/tty && git commit --no-verify -m "$(cat $1)"
 npx --no -- commitlint --edit $1

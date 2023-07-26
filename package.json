@@ -11,7 +11,6 @@
     "build:prod": "vite build --mode production",
     "eslint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",
     "prettier": "prettier --write .",
-    "commit:comment": "引导设置规范化的提交信息",
     "commit": "git-cz"
   },
   "dependencies": {
@@ -47,6 +46,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-vue": "^9.15.1",
     "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "sass": "^1.64.1",
     "typescript": "^5.0.2",
