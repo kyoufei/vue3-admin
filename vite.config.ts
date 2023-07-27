@@ -4,9 +4,10 @@ import { resolve } from 'node:path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
-// import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
+import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
 import UnoCSS from 'unocss/vite';
 import requireTransform from 'vite-plugin-require-transform';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
@@ -30,23 +31,29 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
         dts: resolve(resolve(__dirname, 'src'), 'types', 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径
         resolvers: [ElementPlusResolver()],
       }),
-      // createStyleImportPlugin({
-      //   resolves: [ElementPlusResolve()],
-      //   libs: [
-      //     {
-      //       libraryName: 'element-plus',
-      //       esModule: true,
-      //       resolveStyle: (name) => {
-      //         return `element-plus/lib/theme-chalk/${name}.css`;
-      //       },
-      //     },
-      //   ],
-      // }),
+      createStyleImportPlugin({
+        resolves: [ElementPlusResolve()],
+        libs: [
+          {
+            libraryName: 'element-plus',
+            esModule: true,
+            resolveStyle: (name) => {
+              return `element-plus/theme-chalk/${name}.css`;
+            },
+          },
+        ],
+      }),
       UnoCSS({
         /* options */
       }),
       requireTransform({
         fileRegex: /\.vue$|\.js$|.cjs$/,
+      }),
+      createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
+        // 指定symbolId格式
+        symbolId: 'icon-[dir]-[name]',
       }),
     ],
     // 引用使用sass的库要配置一下
@@ -54,7 +61,7 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
       preprocessorOptions: {
         scss: {
           javascriptEnabled: true,
-          additionalData: `@use "@/styles/variables.scss" as *;`,
+          additionalData: `@use "@/assets/styles/variables.scss" as *;`,
         },
       },
     },

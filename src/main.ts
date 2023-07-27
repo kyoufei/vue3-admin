@@ -7,6 +7,8 @@ import i18n from '@/locales';
 import './mock/index';
 import '@/style.css';
 import 'uno.css';
+// 注册svg
+import 'virtual:svg-icons-register';
 
 const app = createApp(App);
 // 挂载pinia

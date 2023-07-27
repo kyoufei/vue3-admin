@@ -1,9 +1,10 @@
 <template>
   <div>
     <div>{{ $t('login.login') }} {{ $t('public.delete') }}</div>
-    <ElButton @click="test">修改store值</ElButton>
+    <ElButton @click="test">测试国际化</ElButton>
     <ElButton @click="testMock">测试mock</ElButton>
     <div>{{ mockData }}</div>
+    <SvgIcon name="noPlan" size="400px" />
   </div>
 </template>
 <script setup lang="ts">
