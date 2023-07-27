@@ -5,7 +5,7 @@ import store from '@/store';
 import i18n from '@/locales';
 //导入mock
 import './mock/index';
-import '@/style.css';
+import '@/styles/index.scss';
 import 'uno.css';
 // 注册svg
 import 'virtual:svg-icons-register';

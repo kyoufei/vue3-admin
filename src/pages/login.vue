@@ -1,30 +1,70 @@
 <template>
-  <div>
-    <div>{{ $t('login.login') }} {{ $t('public.delete') }}</div>
-    <ElButton @click="test">测试国际化</ElButton>
-    <ElButton @click="testMock">测试mock</ElButton>
-    <div>{{ mockData }}</div>
-    <SvgIcon name="noPlan" size="400px" />
+  <div class="min-h-screen flex justify-center items-center">
+    <div class="shadow-md b-rd-3 w-120 p-20 bg-white">
+      <el-form ref="loginFormRef" :model="loginForm" :rules="loginFormRules" @keyup.enter="login">
+        <el-form-item prop="username">
+          <el-input v-model="loginForm.username" placeholder="用户名" type="text" tabindex="1" :prefix-icon="User" />
+        </el-form-item>
+        <el-form-item prop="password">
+          <el-input
+            v-model="loginForm.password"
+            placeholder="密码"
+            type="password"
+            tabindex="2"
+            :prefix-icon="Lock"
+            show-password
+          />
+        </el-form-item>
+        <el-form-item>
+          <el-button class="w-100" type="primary" :loading="loading" @click="login">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
+
 <script setup lang="ts">
-import { useLocale } from '@/locales/useLocale.ts';
-import request from '@/utils/axios';
+// import request from '@/utils/axios';
+import { User, Lock } from '@element-plus/icons-vue';
+import { FormInstance } from 'element-plus';
+import { type LoginRequestData } from '@/api/login/types.ts';
 
-const appStore = useLocale();
-let count = ref(0);
-const test = () => {
-  count.value++;
-  const lang = count.value % 2 === 0 ? 'en' : 'zh_CN';
-  appStore.setI18nLanguage(lang);
-  console.log(appStore.language);
-};
+/** 登录表单元素的引用 */
+const loginFormRef = ref<FormInstance | null>(null);
 
-const mockData = ref('');
-const testMock = () => {
-  request.get('/getData').then((res) => {
-    console.log(res);
-    mockData.value = res.data;
+/** 登录按钮loading */
+const loading = ref(false);
+
+/** 登录表单数据 */
+const loginForm: LoginRequestData = reactive({
+  username: '',
+  password: '',
+});
+
+/** 登录事件 */
+const login = () => {
+  loginFormRef.value?.validate((valid: boolean, fields) => {
+    if (!valid) return;
+    loading.value = true;
+    console.log('login', loginForm, fields);
+    loading.value = false;
   });
 };
+
+/** 登录表单验证规则 */
+const loginFormRules = {
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 8, max: 16, message: '长度在 8 到 16 个字符', trigger: 'blur' },
+  ],
+  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
+};
+
+// const testMock = () => {
+//   request.get('/getData').then((res) => {
+//     console.log(res);
+//     mockData.value = res.data;
+//   });
+// };
 </script>

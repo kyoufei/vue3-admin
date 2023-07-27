@@ -13,9 +13,7 @@ export function useLocale() {
   /**
    * 根据语言标识读取对应的语言包(element-plus)
    */
-  const local = computed(() => {
-    return language.value === 'en' ? en : zhCn;
-  });
+  const local = computed(() => (language.value === 'en' ? en : zhCn));
 
   /**
    * 设置语言

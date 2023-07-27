@@ -1,7 +1,7 @@
 {
-  "name": "wx-attack",
+  "name": "vue3-admin",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "lint:stylelint": "stylelint  \"**/*.{css,scss,vue,html}\" --fix",
     "prettier": "prettier --write .",
     "commit": "git-cz",
+    "prepare": "husky install",
     "test": "vitest"
   },
   "dependencies": {
@@ -84,7 +85,7 @@
     "*.{cjs,json}": [
       "prettier --write"
     ],
-    "*.{vue,html}": [
+    "*.{vue}": [
       "eslint --fix",
       "prettier --write",
       "stylelint --fix"

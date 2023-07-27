@@ -8,6 +8,7 @@ import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-i
 import UnoCSS from 'unocss/vite';
 import requireTransform from 'vite-plugin-require-transform';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import transformerDirective from '@unocss/transformer-directives';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
@@ -45,6 +46,7 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
       }),
       UnoCSS({
         /* options */
+        transformers: [transformerDirective()],
       }),
       requireTransform({
         fileRegex: /\.vue$|\.js$|.cjs$/,
@@ -57,14 +59,14 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
       }),
     ],
     // 引用使用sass的库要配置一下
-    css: {
-      preprocessorOptions: {
-        scss: {
-          javascriptEnabled: true,
-          additionalData: `@use "@/assets/styles/variables.scss" as *;`,
-        },
-      },
-    },
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       javascriptEnabled: true,
+    //       // additionalData: `@use "@/styles/variables.scss" as *;`,
+    //     },
+    //   },
+    // },
     resolve: {
       alias: {
         '@': resolve(__dirname, 'src'),
