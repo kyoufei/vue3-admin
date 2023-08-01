@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>{{ $t('login.login') }} {{ $t('public.delete') }}</div>
+    <div>{{ t('login.login') }} {{ t('public.delete') }}</div>
     <ElButton @click="test">测试国际化</ElButton>
     <ElButton @click="testMock">测试mock</ElButton>
     <div>{{ mockData }}</div>
@@ -9,8 +9,9 @@
 </template>
 <script setup lang="ts">
 import { useLocale } from '@/locales/useLocale.ts';
-import request from '@/utils/axios';
+import request from '@/utils/request';
 
+const { t } = useI18n();
 const appStore = useLocale();
 let count = ref(0);
 const test = () => {

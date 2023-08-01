@@ -27,7 +27,11 @@
 // import request from '@/utils/axios';
 import { User, Lock } from '@element-plus/icons-vue';
 import { FormInstance } from 'element-plus';
-import { type LoginRequestData } from '@/api/login/types.ts';
+import { LoginRequestData } from '@/api/login/types.ts';
+import request from '@/utils/request';
+
+/* router */
+const router = useRouter();
 
 /** 登录表单元素的引用 */
 const loginFormRef = ref<FormInstance | null>(null);
@@ -37,17 +41,21 @@ const loading = ref(false);
 
 /** 登录表单数据 */
 const loginForm: LoginRequestData = reactive({
-  username: '',
-  password: '',
+  username: 'admin',
+  password: '12345678',
 });
 
 /** 登录事件 */
 const login = () => {
-  loginFormRef.value?.validate((valid: boolean, fields) => {
+  loginFormRef.value?.validate((valid: boolean) => {
     if (!valid) return;
     loading.value = true;
-    console.log('login', loginForm, fields);
-    loading.value = false;
+    request.post('/login', loginForm).then((res) => {
+      console.log('login', res.token);
+      sessionStorage.setItem('token', res.token);
+      loading.value = false;
+      router.push({ path: '/build' });
+    });
   });
 };
 

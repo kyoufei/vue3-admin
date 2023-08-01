@@ -4,6 +4,8 @@ import { resolve } from 'node:path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import';
 import UnoCSS from 'unocss/vite';
 import requireTransform from 'vite-plugin-require-transform';
@@ -24,13 +26,25 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
         },
         dts: resolve(resolve(__dirname, 'src'), 'types', 'auto-imports.d.ts'), // 指定自动导入函数TS类型声明文件路
         vueTemplate: true, // 是否在 vue 模板中自动导入
-        resolvers: [ElementPlusResolver()],
+        resolvers: [
+          ElementPlusResolver(), // 自动导入图标组件
+          IconsResolver({}),
+        ],
       }),
       Components({
-        dirs: ['src/components/'],
+        dirs: ['src/components/', 'src/layout/'],
         extensions: ['vue', 'tsx'],
         dts: resolve(resolve(__dirname, 'src'), 'types', 'components.d.ts'), // 指定自动导入组件TS类型声明文件路径
-        resolvers: [ElementPlusResolver()],
+        resolvers: [
+          ElementPlusResolver(), // 自动注册组件
+          IconsResolver({
+            enabledCollections: ['ep'], // element-plus图标库，其他图标库 https://icon-sets.iconify.design/
+          }),
+        ],
+      }),
+      Icons({
+        // 自动安装图标库
+        autoInstall: true,
       }),
       createStyleImportPlugin({
         resolves: [ElementPlusResolve()],

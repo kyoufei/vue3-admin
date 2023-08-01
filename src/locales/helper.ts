@@ -6,7 +6,6 @@ export function setHtmlPageLang(lang: string) {
 
 export function genMessage(langs, prefix = 'lang') {
   const obj = {};
-  console.log(langs);
   Object.keys(langs).forEach((key) => {
     const langFileModule = langs[key].default;
     let fileName = key.replace(`./${prefix}/`, '').replace(/^\.\//, '');

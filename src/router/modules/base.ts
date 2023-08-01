@@ -1,4 +1,12 @@
 import { RouteRecordRaw } from 'vue-router';
+import build from './buld';
+import valification from './valification';
+import manage from './manage';
+import analyse from './analyse';
+
+// const layout = () => import('@/layout/index.vue');
+
+export const modulesRoutes: RouteRecordRaw[] = [...build, ...valification, ...manage, ...analyse];
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -11,4 +19,9 @@ export const routes: RouteRecordRaw[] = [
     },
     component: () => import('@/pages/login.vue'), // 注意这里要带上 文件后缀.vue
   },
+  {
+    path: '/',
+    redirect: '/build',
+  },
+  ...modulesRoutes,
 ];

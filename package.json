@@ -17,6 +17,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@vueuse/core": "^10.2.1",
     "axios": "^1.4.0",
     "crypto-js": "^4.1.1",
@@ -64,6 +65,7 @@
     "typescript": "^5.0.2",
     "unocss": "^0.53.6",
     "unplugin-auto-import": "^0.16.6",
+    "unplugin-icons": "^0.16.5",
     "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.0",
     "vite-plugin-require-transform": "^1.0.21",

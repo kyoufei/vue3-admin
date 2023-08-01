@@ -5,7 +5,6 @@ import { defaultSettings } from '@/setting';
 
 const storeLang = localStorage.getItem('lang') || defaultSettings.lang;
 
-console.log(en, zh);
 const localeData = {
   locale: storeLang, // 设置当前语言类型
   legacy: false, // 如果要支持compositionAPI，此项必须设置为false;

@@ -1,5 +1,5 @@
 // src/api/auth/index.ts
-import request from '@/utils/axios';
+import request from '@/utils/request';
 import { AxiosPromise } from 'axios';
 import { LoginData, LoginResult } from './types';
 

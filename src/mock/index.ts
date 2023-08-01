@@ -8,3 +8,11 @@ Mock.mock('/getData', 'get', {
   code: 200, //请求成功状态码
   data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], //模拟的
 });
+
+// 登录接口
+Mock.mock('/login', 'post', {
+  code: 200, //请求成功状态码
+  data: {
+    token: '1234567890',
+  },
+});

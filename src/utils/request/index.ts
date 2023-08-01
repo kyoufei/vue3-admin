@@ -1,7 +1,6 @@
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from 'axios';
 import { ElMessage, ElMessageBox } from 'element-plus';
 import nProgress from 'nprogress';
-// import { useUserStoreHook } from '@/store/modules/user';
 
 const service = axios.create();
 
@@ -29,10 +28,10 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response: AxiosResponse<any>) => {
     nProgress.done();
-    const { code, msg } = response.data;
+    const { code, msg, data } = response.data;
     // 登录成功
     if (code === 200) {
-      return response.data;
+      return data;
     }
 
     ElMessage.error(msg || '系统出错');
