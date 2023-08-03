@@ -10,11 +10,13 @@
         {{ menuItem.meta.title }}
       </span>
     </template>
-    <side-bar-item
-      v-for="item in menuItem.children"
-      :key="item.path"
-      :menu-item="{ ...item, basePath: resolvePath(menuItem.basePath, menuItem.path) }"
-    ></side-bar-item>
+    <template v-for="item in menuItem.children">
+      <side-bar-item
+        v-if="!item.meta?.hidden"
+        :key="item.path"
+        :menu-item="{ ...item, basePath: resolvePath(menuItem.basePath, menuItem.path) }"
+      ></side-bar-item>
+    </template>
   </el-sub-menu>
   <el-menu-item v-else :index="resolvePath(menuItem.basePath, menuItem.path)">
     <svg-icon v-if="menuItem.meta.svgIcon" :name="menuItem.meta.svgIcon" size="10"></svg-icon>

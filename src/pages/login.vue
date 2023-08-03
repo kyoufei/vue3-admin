@@ -51,7 +51,6 @@ const login = () => {
     if (!valid) return;
     loading.value = true;
     request.post('/login', loginForm).then((res) => {
-      console.log('login', res.token);
       sessionStorage.setItem('token', res.token);
       loading.value = false;
       router.push({ path: '/build' });
@@ -68,11 +67,4 @@ const loginFormRules = {
   ],
   code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
 };
-
-// const testMock = () => {
-//   request.get('/getData').then((res) => {
-//     console.log(res);
-//     mockData.value = res.data;
-//   });
-// };
 </script>

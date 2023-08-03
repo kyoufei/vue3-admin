@@ -4,10 +4,13 @@
       <top-bar></top-bar>
     </el-header>
     <el-container>
-      <el-aside class="h-100%" width="220px">
+      <!-- 220px -->
+      <el-aside class="h-100%" width="auto">
         <side-bar></side-bar>
       </el-aside>
-      <el-main> </el-main>
+      <el-main class="p0!">
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>

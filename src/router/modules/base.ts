@@ -23,5 +23,19 @@ export const routes: RouteRecordRaw[] = [
     path: '/',
     redirect: '/build',
   },
+  {
+    path: '/403',
+    component: () => import('@/pages/error-page/403.vue'),
+    meta: {
+      // hidden: true,
+    },
+  },
+  {
+    path: '/404',
+    component: () => import('@/pages/error-page/404.vue'),
+    meta: {
+      // hidden: true,
+    },
+  },
   ...modulesRoutes,
 ];

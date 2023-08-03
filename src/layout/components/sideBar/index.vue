@@ -3,11 +3,14 @@
     :default-active="defaultActive"
     :collapse="layoutStore.isCollapse"
     class="h-100%"
+    :class="layoutStore.isCollapse ? 'w-60px' : 'w-380px'"
     @select="handleSelect"
     @open="handleOpen"
     @close="handleClose"
   >
-    <side-bar-item v-for="menuItem in menu" :key="menuItem.path" :menu-item="menuItem"></side-bar-item>
+    <template v-for="menuItem in menu">
+      <side-bar-item v-if="!menuItem.meta?.hidden" :key="menuItem.path" :menu-item="menuItem"></side-bar-item>
+    </template>
   </el-menu>
 </template>
 

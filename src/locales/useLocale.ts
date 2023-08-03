@@ -19,14 +19,24 @@ export function useLocale() {
    * 设置语言
    */
   function setI18nLanguage(val: string) {
+    console.log('setI18nLanguage', val);
     language.value = val;
     locale.value = val;
     setHtmlPageLang(val);
+  }
+
+  /**
+   * 切换语言
+   */
+  function toggleLanguage() {
+    const val = language.value === 'en' ? 'zh_CN' : 'en';
+    setI18nLanguage(val);
   }
 
   return {
     language,
     local,
     setI18nLanguage,
+    toggleLanguage,
   };
 }

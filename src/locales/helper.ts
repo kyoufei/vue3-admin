@@ -4,7 +4,7 @@ export function setHtmlPageLang(lang: string) {
   document.querySelector('html')?.setAttribute('lang', lang);
 }
 
-export function genMessage(langs, prefix = 'lang') {
+export function genMessage(langs: any, prefix = 'lang') {
   const obj = {};
   Object.keys(langs).forEach((key) => {
     const langFileModule = langs[key].default;
@@ -17,8 +17,8 @@ export function genMessage(langs, prefix = 'lang') {
 
     if (moduleName) {
       if (objKey) {
-        set(obj, moduleName, obj[moduleName] || {});
-        set(obj[moduleName], objKey, langFileModule);
+        set(obj, moduleName, (obj as any)[moduleName] || {});
+        set((obj as any)[moduleName], objKey, langFileModule);
       } else {
         set(obj, moduleName, langFileModule || {});
       }

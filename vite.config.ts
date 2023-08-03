@@ -90,6 +90,7 @@ export default defineConfig(({ mode: ConfigEnv }): UserConfig => {
         utils: resolve(__dirname, 'src/utils'),
         routes: resolve(__dirname, 'src/routes'),
         styles: resolve(__dirname, 'src/styles'),
+        // 'vue-i18n': 'vue-i18n/dist/vue-i18n.cjs.js', // vue-i18n使用cjs引入,做tree-shaking
       },
     },
     server: {

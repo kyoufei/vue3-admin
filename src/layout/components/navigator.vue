@@ -9,7 +9,6 @@
 
 <script lang="ts" setup>
 const route = useRoute();
-console.log(route);
 const breadcumbs = computed(() => {
   const matched = route.matched;
   return matched;
