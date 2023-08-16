@@ -1,6 +1,7 @@
 <template>
   <el-dialog v-model="innerVisible" title="Tips" width="30%" :before-close="handleClose">
     <el-form :model="form">
+      <el-input v-model="form.name" autocomplete="off" />
       <el-form-item label="Promotion name" :label-width="formLabelWidth">
         <el-input v-model="form.name" autocomplete="off" />
       </el-form-item>

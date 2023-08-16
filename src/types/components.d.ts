@@ -7,8 +7,10 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    copy: typeof import('./../components/editor copy.vue')['default'];
     CustomDialog: typeof import('./../components/customDialog.vue')['default'];
     Dialog: typeof import('./../components/dialog.vue')['default'];
+    Editor: typeof import('./../components/editor.vue')['default'];
     ElAside: typeof import('element-plus/es')['ElAside'];
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb'];
     ElBreadcrumbItem: typeof import('element-plus/es')['ElBreadcrumbItem'];
@@ -33,6 +35,7 @@ declare module 'vue' {
     ElPopover: typeof import('element-plus/es')['ElPopover'];
     ElSelect: typeof import('element-plus/es')['ElSelect'];
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu'];
+    ElSwitch: typeof import('element-plus/es')['ElSwitch'];
     ElTable: typeof import('element-plus/es')['ElTable'];
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn'];
     HelloWorld: typeof import('./../components/HelloWorld.vue')['default'];
@@ -49,6 +52,7 @@ declare module 'vue' {
     TopBar: typeof import('./../layout/components/topBar.vue')['default'];
     TopMode: typeof import('./../layout/topMode.vue')['default'];
     UstomDialog: typeof import('./../components/ustomDialog.vue')['default'];
+    YamlEditor: typeof import('./../components/yamlEditor.vue')['default'];
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective'];

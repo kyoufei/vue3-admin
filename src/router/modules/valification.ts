@@ -13,6 +13,16 @@ const valification = [
     },
     children: [
       {
+        path: 'businessConf',
+        name: 'BusinessConf',
+        meta: {
+          title: '业务配置',
+          keepAlive: true,
+          requireAuth: true,
+        },
+        component: () => import('@/pages/valification/businessConf.vue'),
+      },
+      {
         path: 'index',
         name: 'Valification',
         meta: {

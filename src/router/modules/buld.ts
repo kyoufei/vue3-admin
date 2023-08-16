@@ -54,8 +54,8 @@ const build = [
             component: () => import('@/pages/build/index.vue'),
           },
           {
-            path: 'meshSys',
-            name: 'MeshSys',
+            path: 'meshSys1',
+            name: 'MeshSys1',
             meta: {
               title: 'MESH去中心化自组网分系统',
               keepAlive: true,
@@ -64,8 +64,8 @@ const build = [
             component: () => import('@/pages/build/index.vue'),
           },
           {
-            path: 'meshSys',
-            name: 'MeshSys',
+            path: 'meshSys2',
+            name: 'MeshSys2',
             meta: {
               title: 'MESH去中心化自组网分系统',
               keepAlive: true,
@@ -74,8 +74,8 @@ const build = [
             component: () => import('@/pages/build/index.vue'),
           },
           {
-            path: 'meshSys',
-            name: 'MeshSys',
+            path: 'meshSys3',
+            name: 'MeshSys3',
             meta: {
               title: 'MESH去中心化自组网分系统',
               keepAlive: true,
@@ -84,8 +84,8 @@ const build = [
             component: () => import('@/pages/build/index.vue'),
           },
           {
-            path: 'meshSys',
-            name: 'MeshSys',
+            path: 'meshSys4',
+            name: 'MeshSys4',
             meta: {
               title: 'MESH去中心化自组网分系统',
               keepAlive: true,
@@ -94,8 +94,8 @@ const build = [
             component: () => import('@/pages/build/index.vue'),
           },
           {
-            path: 'meshSys',
-            name: 'MeshSys',
+            path: 'meshSys5',
+            name: 'MeshSys5',
             meta: {
               title: 'MESH去中心化自组网分系统',
               keepAlive: true,
