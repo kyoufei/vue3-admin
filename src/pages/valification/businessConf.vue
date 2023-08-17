@@ -25,7 +25,7 @@ import LogicFlow from '@logicflow/core';
 import '@logicflow/core/dist/style/index.css';
 // import Editor from '@/components/editor.vue';
 const yarmLoading = ref(false);
-const yamlRef = ref(null);
+const yamlRef = ref();
 const code = ref('');
 code.value = ` apiVersion: extensions/v1beta1
  kind: Deployment
